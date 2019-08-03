@@ -27,4 +27,4 @@ Just myself and a friend who prefered to stay unknown and I respect his decision
 If you feel this tool is really useful and want to improve it, then feel free to contribute by sending pull requests or create new issues.
 
 # Contact
-You can reach me on Twitter [@Jiab77](https://twitter.com/Jiab77)
+You can reach me on Twitter using [@Jiab77](https://twitter.com/Jiab77)
