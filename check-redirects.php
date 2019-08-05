@@ -16,7 +16,7 @@ $query_timeout = 10;
 $max_redirects = 5;
 
 // Init cache
-$f3->set('CACHE','folder=/dev/shm/temp');
+$f3->set('CACHE','folder=' . sys_get_temp_dir() . '/');
 
 // Required functions
 function extract_domain($parsed_domain, &$parts = []) {
@@ -66,8 +66,9 @@ function get_loading_time() {
 	return number_format(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 4);
 }
 
+// Init processing
 if (isset($_GET['q']) && !empty($_GET['q'])) {
-	// Init processing
+	// Local config
 	$log = '';
 	$table = '';
 	$host = $_GET['q'];
@@ -386,9 +387,6 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
 	<!-- Import Materialize -->
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection">
 	
-	<!-- Import CSS Animations -->
-	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" media="screen,projection">
-	
 	<!-- Import Style -->
 	<link type="text/css" rel="stylesheet" href="res/main.css" media="all">
 	<title>HSTS Redirection Check</title>
@@ -401,7 +399,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
 					<a class="brand-logo" href="#!"><i class="material-icons hide-on-med-and-down">public</i>HSTS Redirection Check</a>
 					<ul class="right hide-on-med-and-down">
 						<li><a href="#!" class="tooltipped" data-position="bottom" data-tooltip="Refresh" onclick="window.location.reload();"><i class="material-icons">refresh</i></a></li>
-						<li><a href="https://github.com/Jiab77/hsts-redirect-check" class="tooltipped" data-position="bottom" data-tooltip="Fork me on github" target="_blank"><i class="fab fa-github-alt" onmouseover="$(this).addClass('fa-2x');" onmouseout="$(this).removeClass('fa-2x');"></i></a></li>
+						<li><a href="https://github.com/Jiab77/hsts-redirect-check" class="tooltipped" data-position="bottom" data-tooltip="Fork me on github" target="_blank"><i class="fab fa-github-alt fa-anim" onmouseover="$(this).addClass('fa-2x');" onmouseout="$(this).removeClass('fa-2x');"></i></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -451,7 +449,31 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
 
 		</div>
 	</main>
-	<footer><?php echo 'Generated in: ' . get_loading_time() . ' seconds'; ?></footer>
+	<footer class="page-footer grey darken-3">
+		<div class="container">
+			<div class="row">
+				<div class="col l8 s12">
+					<h5 class="white-text">Loading time</h5>
+					<p class="grey-text text-lighten-4"><?php echo 'Generated in: ' . get_loading_time() . ' seconds'; ?></p>
+				</div>
+				<div class="col l2 offset-l2 s12">
+					<h5 class="white-text">Links</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/Jiab77/hsts-redirect-check" target="_blank"><i class="material-icons tiny">code</i> Project</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/Jiab77" target="_blank"><i class="fab fa-github"></i> Profile</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://gist.github.com/Jiab77" target="_blank"><i class="material-icons tiny">library_books</i> Gists</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://twitter.com/jiab77" rel="noreferrer" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright grey darken-4">
+			<div class="container">
+				<?php echo '&copy; ' . date("Y") . ' &ndash; <a href="https://twitter.com/jiab77" rel="noreferrer" target="_blank">Jiab77</a>' . PHP_EOL; ?>
+				<span class="grey-text text-lighten-4 right">Made with <span class="pink-text text-accent-3 tooltipped" data-position="top" data-tooltip="love" style="cursor: default;"><i class="material-icons">favorite</i></span> of <span class="white-text tooltipped" data-position="top" data-tooltip="code" style="cursor: default;"><i class="material-icons">code</i></span> and <span class="brown-text text-accent-3 tooltipped" data-position="top" data-tooltip="coffee" style="cursor: default;"><i class="material-icons">local_cafe</i></span></span>
+			</div>
+		</div>
+	</footer>
 	<script type="text/javascript" id="jquery-js" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript" id="materialize-js" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" id="main-js" src="res/main.js"></script>
