@@ -396,7 +396,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
 		<div class="navbar-fixed">
 			<nav class="grey darken-4">
 				<div class="nav-wrapper">
-					<a class="brand-logo" href="#!"><i class="material-icons hide-on-med-and-down">public</i>HSTS Redirection Check</a>
+					<a class="brand-logo" href="<?php echo sanitize($_SERVER['PHP_SELF'], true, true); ?>"><i class="material-icons hide-on-med-and-down">public</i>HSTS Redirection Check</a>
 					<ul class="right hide-on-med-and-down">
 						<li><a href="#!" class="tooltipped" data-position="bottom" data-tooltip="Refresh" onclick="window.location.reload();"><i class="material-icons">refresh</i></a></li>
 						<li><a href="https://github.com/Jiab77/hsts-redirect-check" class="tooltipped" data-position="bottom" data-tooltip="Fork me on github" target="_blank"><i class="fab fa-github-alt fa-anim" onmouseover="$(this).addClass('fa-2x');" onmouseout="$(this).removeClass('fa-2x');"></i></a></li>
