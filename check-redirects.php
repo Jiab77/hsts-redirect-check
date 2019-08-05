@@ -62,6 +62,9 @@ function get_head($host, $context_options = false) {
 	$headers = $web->request('http://' . $host, $options)['headers'];
 	return $headers;
 }
+function get_loading_time() {
+	return number_format(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 4);
+}
 
 if (isset($_GET['q']) && !empty($_GET['q'])) {
 	// Init processing
