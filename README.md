@@ -1,5 +1,6 @@
 # HSTS Redirect Check
 This tool will help you to solve issues when using `HSTS` with URL Redirections.
+![image](https://user-images.githubusercontent.com/9881407/62499366-b5acbf80-b7e2-11e9-9d3e-99acc51ade16.png)
 
 # Story behind the tool
 This tool was initialy written to debug issues created by the way my domain manager is managing their URL Redirections.
